@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'node'
+
 # Main class for our Linked List
 class LinkedList
   attr_accessor :head, :tail
@@ -7,5 +9,16 @@ class LinkedList
   def initialize(head = nil, tail = nil)
     self.head = head
     self.tail = tail
+  end
+
+  def append(value)
+    node = Node.new(value)
+    if head.nil?
+      self.head = node
+    else
+      tail.next = node
+    end
+
+    self.tail = node
   end
 end
