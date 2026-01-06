@@ -52,4 +52,16 @@ class LinkedList
 
     tail.value
   end
+
+  def at(index)
+    return nil if index > size - 1
+    return l_head if index.zero?
+
+    current_node = head
+    1.upto(index) do
+      current_node = current_node.next_node
+    end
+
+    current_node.value
+  end
 end
