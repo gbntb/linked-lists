@@ -16,7 +16,7 @@ class LinkedList
     if head.nil?
       self.head = node
     else
-      tail.next = node
+      tail.next_node = node
     end
 
     self.tail = node
