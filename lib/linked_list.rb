@@ -64,4 +64,14 @@ class LinkedList
 
     current_node.value
   end
+
+  def pop
+    return nil if head.nil?
+
+    old_head = head
+    self.head = old_head.next_node
+    self.tail = nil if size.zero?
+    old_head.next_node = nil
+    old_head.value
+  end
 end
