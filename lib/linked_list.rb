@@ -4,8 +4,8 @@
 class LinkedList
   attr_accessor :head, :tail
 
-  def initialize
-    self.head = nil
-    self.tail = nil
+  def initialize(head = nil, tail = nil)
+    self.head = head
+    self.tail = tail
   end
 end
