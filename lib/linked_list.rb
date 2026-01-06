@@ -84,4 +84,12 @@ class LinkedList
 
     false
   end
+
+  def index(value)
+    return nil unless contains?(value)
+
+    0.upto(size - 1) do |i|
+      return i if at(i) == value
+    end
+  end
 end
