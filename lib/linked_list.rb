@@ -92,4 +92,15 @@ class LinkedList
       return i if at(i) == value
     end
   end
+
+  def to_s
+    return '' if size.zero?
+
+    result = ''
+    0.upto(size - 1) do |i|
+      result.concat("( #{at(i)} ) -> ")
+    end
+
+    result.concat('nil')
+  end
 end
