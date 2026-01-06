@@ -2,10 +2,10 @@
 
 # Simple class for our nodes
 class Node
-  attr_accessor :data, :next
+  attr_accessor :value, :next
 
-  def initialize(data)
-    self.data = data
+  def initialize(value)
+    self.value = value
     self.next = nil
   end
 end
