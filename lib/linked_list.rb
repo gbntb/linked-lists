@@ -40,4 +40,16 @@ class LinkedList
 
     counter
   end
+
+  def l_head
+    return nil if head.nil?
+
+    head.value
+  end
+
+  def l_tail
+    return nil if tail.nil?
+
+    tail.value
+  end
 end
