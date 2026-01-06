@@ -74,4 +74,14 @@ class LinkedList
     old_head.next_node = nil
     old_head.value
   end
+
+  def contains?(value)
+    return false if size.zero?
+
+    0.upto(size - 1) do |i|
+      return true if at(i) == value
+    end
+
+    false
+  end
 end
