@@ -107,6 +107,7 @@ class LinkedList
   def node_at(index)
     raise IndexError if index.negative? || index > size - 1
     return head if index.zero?
+    return tail if index == size - 1
 
     current_node = head
     1.upto(index) do
@@ -114,5 +115,20 @@ class LinkedList
     end
 
     current_node
+  end
+
+  def remove_at(index) # rubocop:disable Metrics/AbcSize
+    raise IndexError if index.negative? || index > size - 1
+
+    if index.zero?
+      pop
+    elsif index == size - 1
+      node_at(size - 2).next_node = nil
+    else
+      before_node = node_at(index - 1)
+      after_node = node_at(index + 1)
+
+      before_node.next_node = after_node
+    end
   end
 end
