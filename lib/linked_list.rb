@@ -131,4 +131,23 @@ class LinkedList
       before_node.next_node = after_node
     end
   end
+
+  def insert_at(index, *values) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+    values_nodes = values.collect { |value| Node.new(value) }
+    values_nodes.each_with_index do |value_node, vn_index|
+      value_node.next_node = values_nodes[vn_index + 1] unless vn_index == values_nodes.size - 1
+    end
+
+    if index.zero?
+      values_nodes.last.next_node = head
+      self.head = values_nodes.first
+    elsif index == size
+      tail.next_node = values_nodes.first
+    else
+      insert_start = node_at(index - 1)
+      insert_end = node_at(index)
+      insert_start.next_node = values_nodes.first
+      values_nodes.last.next_node = insert_end
+    end
+  end
 end
