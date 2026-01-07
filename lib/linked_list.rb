@@ -132,7 +132,9 @@ class LinkedList
     end
   end
 
-  def insert_at(index, *values) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+  def insert_at(index, *values) # rubocop:disable Metrics
+    raise IndexError if index.negative? || index > size
+
     values_nodes = values.collect { |value| Node.new(value) }
     values_nodes.each_with_index do |value_node, vn_index|
       value_node.next_node = values_nodes[vn_index + 1] unless vn_index == values_nodes.size - 1
