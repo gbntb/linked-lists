@@ -103,4 +103,16 @@ class LinkedList
 
     result.concat('nil')
   end
+
+  def node_at(index)
+    raise IndexError if index.negative? || index > size - 1
+    return head if index.zero?
+
+    current_node = head
+    1.upto(index) do
+      current_node = current_node.next_node
+    end
+
+    current_node
+  end
 end
