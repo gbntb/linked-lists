@@ -3,9 +3,7 @@
 require_relative 'node'
 
 # Main class for our Linked List
-class LinkedList
-  attr_accessor :head, :tail
-
+class LinkedList # rubocop:disable Metrics/ClassLength
   def initialize(head = nil, tail = nil)
     self.head = head
     self.tail = tail
@@ -104,19 +102,6 @@ class LinkedList
     result.concat('nil')
   end
 
-  def node_at(index)
-    raise IndexError if index.negative? || index > size - 1
-    return head if index.zero?
-    return tail if index == size - 1
-
-    current_node = head
-    1.upto(index) do
-      current_node = current_node.next_node
-    end
-
-    current_node
-  end
-
   def remove_at(index) # rubocop:disable Metrics/AbcSize
     raise IndexError if index.negative? || index > size - 1
 
@@ -151,5 +136,22 @@ class LinkedList
       insert_start.next_node = values_nodes.first
       values_nodes.last.next_node = insert_end
     end
+  end
+
+  private
+
+  attr_accessor :head, :tail
+
+  def node_at(index)
+    raise IndexError if index.negative? || index > size - 1
+    return head if index.zero?
+    return tail if index == size - 1
+
+    current_node = head
+    1.upto(index) do
+      current_node = current_node.next_node
+    end
+
+    current_node
   end
 end
